@@ -1,8 +1,11 @@
+package com.springbootbookliststudy.demo;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 
@@ -10,7 +13,7 @@ import java.util.List;
 @RequestMapping("/")
 public class ReadingListController {
 
-    private static final String reader="craig";
+    private static final String reader = "craig";
 
     private ReadingListRepository readingListRepository;
 
@@ -19,7 +22,7 @@ public class ReadingListController {
         this.readingListRepository=readingListRepository;
     }
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     public String readerBooks(Model model){
         List<Book> readingList = readingListRepository.findByReader(reader);
         if(readingList != null){
@@ -28,7 +31,7 @@ public class ReadingListController {
         return "readingList";
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @PostMapping
     public String addRoReadingList(Book book){
         book.setReader(reader);
         readingListRepository.save(book);
