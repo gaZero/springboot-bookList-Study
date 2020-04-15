@@ -1,7 +1,7 @@
-package com.springbootbookliststudy.demo;
+package readinglist;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,20 +16,23 @@ import java.util.List;
 public class ReadingListController {
 
     private static final String reader = "craig";
-
     private final ReadingListRepository readingListRepository;
+    private final AmazonProperties amazonProperties;
 
     @GetMapping
-    public String readerBooks(Model model){
+    public String readerBooks(Reader reader, Model model){
         List<Book> readingList = readingListRepository.findByReader(reader);
         if(readingList != null){
             model.addAttribute("books",readingList);
+            model.addAttribute("reader", reader);
+            model.addAttribute("amazonID",amazonProperties.getAssociateId());
         }
         return "readingList";
     }
 
+
     @PostMapping
-    public String addRoReadingList(Book book){
+    public String addRoReadingList(Reader reader, Book book){
         book.setReader(reader);
         readingListRepository.save(book);
         return "redirect:/";

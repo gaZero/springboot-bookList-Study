@@ -1,4 +1,4 @@
-package com.springbootbookliststudy.demo;
+package readinglist;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
