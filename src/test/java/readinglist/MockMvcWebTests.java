@@ -15,11 +15,8 @@ import org.springframework.web.context.WebApplicationContext;
 @WebAppConfiguration
 public class MockMvcWebTests {
 
-    @Autowired
-    private WebApplicationContext webContext;
 
     private MockMvc mockMvc;
-
     @Before
     public void setupMockMvc(){
         mockMvc = MockMvcBuilders
