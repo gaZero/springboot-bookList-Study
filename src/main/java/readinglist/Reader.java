@@ -11,9 +11,9 @@ import javax.persistence.Id;
 import java.util.Arrays;
 import java.util.Collection;
 
+@Entity
 @Getter
 @Setter
-@Entity
 public class Reader implements UserDetails {
 
     private static final long serialVersionUID=1L;

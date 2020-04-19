@@ -28,7 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
 
                 .authorizeRequests()
-//                .antMatchers("/").access("hasRole('READER')")
+                .antMatchers("/").access("hasRole('READER')")
                 .antMatchers("/",
                         "/h2-console")
 

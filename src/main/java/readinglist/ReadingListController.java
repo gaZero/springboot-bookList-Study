@@ -15,7 +15,6 @@ import java.util.List;
 @RequestMapping("/")
 public class ReadingListController {
 
-    private static final String reader = "craig";
     private final ReadingListRepository readingListRepository;
     private final AmazonProperties amazonProperties;
 
